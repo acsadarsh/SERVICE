@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Request - ACS</title>
+    <style>
+        :root {
+            --neon-blue: #00d4ff;
+            --neon-purple: #9d00ff;
+            --dark-bg: #0a0a0c;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--dark-bg);
+            color: white;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .form-container, .certificate-container {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid var(--neon-blue);
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 0 20px var(--neon-blue);
+        }
+
+        h2 { color: var(--neon-blue); text-align: center; }
+
+        label { display: block; margin-top: 15px; font-weight: bold; }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #444;
+            background: #1a1a1a;
+            color: white;
+            box-sizing: border-box;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .submit-btn { background: var(--neon-blue); color: black; }
+        .reset-btn { background: #ff4444; color: white; }
+
+        /* Certificate Styling */
+        #certificate {
+            display: none;
+            text-align: center;
+            border: 10px double var(--neon-purple);
+            padding: 40px;
+            background: #fff;
+            color: #000;
+        }
+
+        .cert-header { font-size: 24px; font-weight: bold; color: #1a1a2e; }
+        .cert-detail { margin: 20px 0; border-top: 1px solid #ccc; padding-top: 10px; }
+        
+        .whatsapp-btn {
+            display: block;
+            background: #25D366;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        #imagePreview {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            margin-top: 10px;
+            display: none;
+            border: 2px solid var(--neon-blue);
+        }
+    </style>
+</head>
+<body>
+
+<div id="formSection" class="form-container">
+    <h2>Request Service 🛠️</h2>
+    <form id="serviceForm">
+        <label>Your Name:</label>
+        <input type="text" id="userName" required placeholder="Apna Naam Likhein">
+
+        <label>Mobile Number:</label>
+        <input type="tel" id="userMobile" required placeholder="91XXXXXXXX">
+
+        <label>Service Request Name:</label>
+        <input type="text" id="serviceName" required placeholder="Jaise: Photo Editing, JCB Part">
+
+        <label>Description (Idea):</label>
+        <textarea id="description" rows="3" placeholder="Apne kaam ka idea batayein"></textarea>
+
+        <label>Add Image (Optional):</label>
+        <input type="file" id="userImage" accept="image/*" onchange="previewFile()">
+        <img id="imagePreview" alt="Preview">
+
+        <div class="btn-group">
+            <button type="reset" class="reset-btn" onclick="hidePreview()">Reset</button>
+            <button type="button" class="submit-btn" onclick="generateCertificate()">Submit</button>
+        </div>
+    </form>
+</div>
+
+<div id="certificate" class="certificate-container">
+    <div class="cert-header">ADARSH COMPUTER SERVICES & SOLVE 🖥️ 💻</div>
+    <p style="font-size: 20px; color: #d4af37;">CONGRATULATIONS!</p>
+    <div class="cert-detail">
+        <p><strong>Customer Name:</strong> <span id="certName"></span></p>
+        <p><strong>Mobile:</strong> <span id="certMobile"></span></p>
+        <p><strong>Service:</strong> <span id="certService"></span></p>
+        <p><strong>Idea:</strong> <span id="certDesc"></span></p>
+    </div>
+    <p>Your request has been successfully registered.</p>
+    
+    <a id="whatsappLink" href="#" class="whatsapp-btn">
+        📩 SEND WITH WHATSAPP
+    </a>
+</div>
+
+<script>
+    function previewFile() {
+        const preview = document.getElementById('imagePreview');
+        const file = document.querySelector('input[type=file]').files[0];
+        const reader = new FileReader();
+
+        reader.onloadend = function () {
+            preview.src = reader.result;
+            preview.style.display = "block";
+        }
+
+        if (file) { reader.readAsDataURL(file); } 
+        else { preview.src = ""; }
+    }
+
+    function hidePreview() {
+        document.getElementById('imagePreview').style.display = "none";
+    }
+
+    function generateCertificate() {
+        const name = document.getElementById('userName').value;
+        const mobile = document.getElementById('userMobile').value;
+        const service = document.getElementById('serviceName').value;
+        const desc = document.getElementById('description').value;
+
+        if(!name || !mobile || !service) {
+            alert("Kripya zaruri details bharein!");
+            return;
+        }
+
+        // Fill Certificate
+        document.getElementById('certName').innerText = name;
+        document.getElementById('certMobile').innerText = mobile;
+        document.getElementById('certService').innerText = service;
+        document.getElementById('certDesc').innerText = desc;
+
+        // Show Certificate, Hide Form
+        document.getElementById('formSection').style.display = "none";
+        document.getElementById('certificate').style.display = "block";
+
+        // Create WhatsApp Message
+        const message = `*ADARSH COMPUTER SERVICES & SOLVE*%0A---%0A*Name:* ${name}%0A*Mobile:* ${mobile}%0A*Service:* ${service}%0A*Description:* ${desc}%0A---%0A_Sir, maine apni service request submit kar di hai._`;
+        const whatsappUrl = `https://wa.me/918252900810?text=${message}`;
+        
+        document.getElementById('whatsappLink').href = whatsappUrl;
+    }
+</script>
+
+</body>
+</html>
