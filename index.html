@@ -3,22 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adarsh Computer Services & Solve</title>
+    <title>ACS - Adarsh Computer Services & Solve</title>
     <style>
         :root {
             --neon-blue: #00d4ff;
             --neon-purple: #9d00ff;
             --dark-bg: #0a0a0c;
+            --gold: #d4af37;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
             margin: 0;
             background-color: var(--dark-bg);
             color: white;
             line-height: 1.6;
         }
 
+        /* --- Header & Design --- */
         header {
             padding: 50px 20px;
             text-align: center;
@@ -30,37 +32,26 @@
         .logo-text {
             font-size: 3rem;
             font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 5px;
             color: var(--neon-blue);
             text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-purple);
         }
 
-        .container {
-            max-width: 1000px;
-            margin: auto;
-            padding: 20px;
-        }
+        .container { max-width: 900px; margin: auto; padding: 20px; }
 
         .section {
-            margin: 40px 0;
-            padding: 30px;
+            margin: 30px 0;
+            padding: 25px;
             background: rgba(255, 255, 255, 0.05);
             border-radius: 15px;
             border-left: 5px solid var(--neon-blue);
         }
 
-        h2 {
-            color: var(--neon-purple);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 10px;
-            text-transform: uppercase;
-        }
+        h2 { color: var(--neon-purple); border-bottom: 1px solid #333; padding-bottom: 10px; }
 
         /* --- Album Grid --- */
         .album-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 15px;
         }
 
@@ -68,49 +59,54 @@
             border-radius: 10px;
             border: 2px solid var(--neon-blue);
             overflow: hidden;
-            transition: 0.4s;
+            transition: 0.3s;
         }
 
-        .album-item img { width: 100%; height: 200px; object-fit: cover; }
-        .album-item:hover { transform: scale(1.05); box-shadow: 0 0 20px var(--neon-blue); }
+        .album-item img { width: 100%; height: 180px; object-fit: cover; display: block; }
+        .album-item:hover { transform: scale(1.05); box-shadow: 0 0 15px var(--neon-blue); }
 
-        /* --- Service Form Styling --- */
+        /* --- Form Styling --- */
         .form-group { margin-bottom: 15px; }
-        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; color: var(--neon-blue); }
         input, textarea {
-            width: 100%; padding: 12px; border-radius: 5px; border: 1px solid #333;
-            background: #16161a; color: white; box-sizing: border-box;
+            width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #444;
+            background: #111; color: white; box-sizing: border-box;
         }
 
         .btn-group { display: flex; gap: 10px; margin-top: 20px; }
-        .submit-btn { background: var(--neon-blue); color: black; border: none; padding: 15px; font-weight: bold; cursor: pointer; flex: 1; border-radius: 5px; }
-        .reset-btn { background: #ff4444; color: white; border: none; padding: 15px; cursor: pointer; flex: 1; border-radius: 5px; }
+        .submit-btn { background: var(--neon-blue); color: black; border: none; padding: 15px; font-weight: bold; cursor: pointer; flex: 2; border-radius: 8px; }
+        .reset-btn { background: #ff4444; color: white; border: none; padding: 15px; cursor: pointer; flex: 1; border-radius: 8px; }
 
-        /* --- Certificate --- */
+        /* --- Premium Certificate Look --- */
         #certificate {
             display: none;
             text-align: center;
-            border: 5px solid #d4af37;
-            padding: 30px;
-            background: white;
-            color: black;
-            border-radius: 10px;
+            border: 10px double var(--gold);
+            padding: 40px;
+            background: #fff;
+            color: #1a1a2e;
+            border-radius: 5px;
             margin-top: 20px;
+            position: relative;
         }
 
+        #certificate h1 { margin: 0; font-size: 22px; text-decoration: underline; }
+        .cert-body { margin: 25px 0; font-size: 18px; line-height: 1.8; text-align: left; background: #f9f9f9; padding: 15px; border-radius: 5px; }
+        
         .whatsapp-btn {
             display: block; background: #25D366; color: white;
-            text-decoration: none; padding: 15px; border-radius: 10px;
-            margin-top: 20px; font-weight: bold; font-size: 1.2rem;
+            text-decoration: none; padding: 18px; border-radius: 10px;
+            margin-top: 25px; font-weight: bold; font-size: 1.3rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
 
-        .map-container { width: 100%; height: 250px; border-radius: 15px; overflow: hidden; border: 2px solid var(--neon-blue); margin-top: 20px; }
-
-        footer { text-align: center; padding: 30px; color: #888; border-top: 1px solid #333; }
-
+        /* --- Footer & Misc --- */
+        .map-container { width: 100%; height: 200px; border-radius: 10px; overflow: hidden; border: 2px solid var(--neon-blue); margin-top: 15px; }
+        footer { text-align: center; padding: 30px; color: #666; font-size: 0.8rem; }
+        
         #welcome-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.95); display: flex; justify-content: center; align-items: center; z-index: 1000;
+            background: rgba(0,0,0,0.9); display: flex; justify-content: center; align-items: center; z-index: 9999;
         }
     </style>
 </head>
@@ -118,87 +114,91 @@
 
 <div id="welcome-overlay">
     <div style="text-align: center;">
-        <h2 style="color: white; border:none;">WELCOME TO ACS</h2>
-        <p>क्लिक करें और अंदर आएं</p>
+        <h2 style="color: white; border:none;">WELCOME TO ADARSH COMPUTER</h2>
+        <p>क्लिक करें और वेबसाइट देखें</p>
     </div>
 </div>
 
 <header>
     <div class="logo-text">ACS</div>
     <h1>Adarsh Computer Services & Solve</h1>
-    <p>Itkhori's Trusted Digital Partner</p>
+    <p>Empowering Itkhori with Quality Tech Solutions</p>
 </header>
 
 <div class="container">
     
     <section class="section">
-        <h2>Photo Album</h2>
+        <h2>Photo Gallery</h2>
         <div class="album-grid">
-            
             <div class="album-item"><img src="https://i.ibb.co/hFRHRQ97/image.jpg" alt="Photo 3"></div>
-            
         </div>
     </section>
 
     <section class="section" id="formSection">
-        <h2>Service Request Form</h2>
+        <h2>Service Request Form 🛠️</h2>
         <form id="serviceForm">
             <div class="form-group">
-                <label>Your Name:</label>
-                <input type="text" id="userName" placeholder="Apna Naam Dalein" required>
+                <label>Full Name:</label>
+                <input type="text" id="userName" placeholder="अपना पूरा नाम लिखें" required>
             </div>
             <div class="form-group">
                 <label>Mobile Number:</label>
                 <input type="tel" id="userMobile" placeholder="91XXXXXXXX" required>
             </div>
             <div class="form-group">
-                <label>Service Request Name:</label>
-                <input type="text" id="serviceName" placeholder="Jaise: Photo Editing, JCB Parts" required>
+                <label>Service Needed:</label>
+                <input type="text" id="serviceName" placeholder="Ex: Photo Editing, JCB Parts, Online Form" required>
             </div>
             <div class="form-group">
-                <label>Description (Your Idea):</label>
-                <textarea id="description" rows="4" placeholder="Apne kaam ki puri jankari likhein"></textarea>
+                <label>Description & Idea:</label>
+                <textarea id="description" rows="3" placeholder="अपने काम के बारे में विस्तार से बताएं..."></textarea>
             </div>
             <div class="form-group">
-                <label>Add Image (अपनी फाइल चुनें):</label>
-                <input type="file" accept="image/*">
+                <label>Add Your Image (फोटो चुनें):</label>
+                <input type="file" id="userPhoto" accept="image/*">
             </div>
             <div class="btn-group">
                 <button type="reset" class="reset-btn">RESET</button>
-                <button type="button" class="submit-btn" onclick="generateCertificate()">SUBMIT</button>
+                <button type="button" class="submit-btn" onclick="generateCertificate()">SUBMIT & GENERATE CERTIFICATE</button>
             </div>
         </form>
     </section>
 
     <div id="certificate">
-        <h1 style="color: #1a1a2e;">ADARSH COMPUTER SERVICES & SOLVE 🖥️ 💻</h1>
-        <h2 style="color: #d4af37; border:none;">CONGRATULATIONS!</h2>
-        <div style="text-align: left; margin: 20px 0; border-top: 1px solid #ccc; padding-top: 10px;">
-            <p><strong>Customer Name:</strong> <span id="certName"></span></p>
-            <p><strong>Mobile:</strong> <span id="certMobile"></span></p>
-            <p><strong>Service:</strong> <span id="certService"></span></p>
-            <p><strong>Idea:</strong> <span id="certDesc"></span></p>
+        <div style="font-size: 40px; color: var(--gold);">🎖️</div>
+        <h1>ADARSH COMPUTER SERVICES & SOLVE</h1>
+        <h3 style="color: #555;">CONGRATULATIONS!</h3>
+        <p>Aapka Service Request Safaltapurvak Recieve Ho Gaya Hai.</p>
+        
+        <div class="cert-body">
+            <strong>Customer:</strong> <span id="certName"></span><br>
+            <strong>Mobile:</strong> <span id="certMobile"></span><br>
+            <strong>Service:</strong> <span id="certService"></span><br>
+            <strong>Details:</strong> <span id="certDesc"></span>
         </div>
-        <p>Aapka request safaltapurvak darj ho gaya hai.</p>
-        <a id="whatsappLink" href="#" class="whatsapp-btn">SEND WITH WHATSAPP</a>
+        
+        <p style="font-style: italic; color: #888;">Niche button par click karke details WhatsApp par bhej dein.</p>
+        
+        <a id="whatsappLink" href="#" class="whatsapp-btn">📲 SEND WITH WHATSAPP</a>
     </div>
 
     <section class="section">
-        <h2>Contact & Location</h2>
+        <h2>Find Us</h2>
         <p>📍 Chhota Basti, Itkhori, Chatra, Jharkhand</p>
-        <p>📞 WhatsApp: <a href="https://wa.me/918252900810" style="color:var(--neon-blue)">8252900810</a></p>
+        <p>📞 Contact: 8252900810</p>
         <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3635.809478440801!2d85.1437!3d24.32!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjTCsDE5JzEyLjAiTiA4NcKwMDgnMzcuMyJF!5e0!3m2!1sen!2sin!4v1640000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <iframe src="http://googleusercontent.com/maps.google.com/4" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
     </section>
 
 </div>
 
 <footer>
-    © 2026 Adarsh Computer Services & Solve | Created by Adarsh Kumar Chandravanshi
+    © 2026 Adarsh Computer Services & Solve | All Rights Reserved.
 </footer>
 
 <script>
+    // 1. Welcome Voice
     function playWelcome() {
         document.getElementById('welcome-overlay').style.display = 'none';
         let msg = new SpeechSynthesisUtterance();
@@ -207,37 +207,50 @@
         window.speechSynthesis.speak(msg);
     }
 
+    // 2. Certificate & WhatsApp Logic
     function generateCertificate() {
         const name = document.getElementById('userName').value;
         const mobile = document.getElementById('userMobile').value;
         const service = document.getElementById('serviceName').value;
         const desc = document.getElementById('description').value;
+        const photoFile = document.getElementById('userPhoto').files.length;
 
         if(!name || !mobile || !service) {
-            alert("Kripya zaruri details bharein!");
+            alert("Kripya Naam, Number aur Service sahi se bharein!");
             return;
         }
 
+        // Fill Data in Certificate
         document.getElementById('certName').innerText = name;
         document.getElementById('certMobile').innerText = mobile;
         document.getElementById('certService').innerText = service;
-        document.getElementById('certDesc').innerText = desc;
+        document.getElementById('certDesc').innerText = desc || "N/A";
 
+        // Switch View
         document.getElementById('formSection').style.display = "none";
         document.getElementById('certificate').style.display = "block";
 
-        // Full WhatsApp Message Formatting
-        let fullMessage = "*ADARSH COMPUTER SERVICES %26 SOLVE* 🖥️💻%0A";
-        fullMessage += "---------------------------------------%0A";
-        fullMessage += "*CONGRATULATIONS!*%0A%0A";
-        fullMessage += "*Customer Name:* " + encodeURIComponent(name) + "%0A";
-        fullMessage += "*Mobile Number:* " + encodeURIComponent(mobile) + "%0A";
-        fullMessage += "*Service:* " + encodeURIComponent(service) + "%0A";
-        fullMessage += "*Description:* " + encodeURIComponent(desc) + "%0A";
-        fullMessage += "---------------------------------------%0A";
-        fullMessage += "_Sent via ACS Online Portal_";
+        // Format WhatsApp Message
+        let waMessage = "*ADARSH COMPUTER SERVICES %26 SOLVE* 🖥️💻%0A";
+        waMessage += "---------------------------------------%0A";
+        waMessage += "*SERVICE REQUEST CONFIRMED*%0A%0A";
+        waMessage += "*Name:* " + encodeURIComponent(name) + "%0A";
+        waMessage += "*Mobile:* " + encodeURIComponent(mobile) + "%0A";
+        waMessage += "*Service:* " + encodeURIComponent(service) + "%0A";
+        waMessage += "*Description:* " + encodeURIComponent(desc) + "%0A";
+        waMessage += "---------------------------------------%0A";
+        waMessage += "_Sir, maine certificate generate kar liya hai. Photo bhi attach kar raha hoon._";
 
-        document.getElementById('whatsappLink').href = "https://wa.me/918252900810?text=" + fullMessage;
+        const waUrl = "https://wa.me/918252900810?text=" + waMessage;
+        const waLink = document.getElementById('whatsappLink');
+        waLink.href = waUrl;
+
+        // Reminder for Photo
+        waLink.onclick = function() {
+            if(photoFile > 0) {
+                alert("Sir, WhatsApp open hone ke baad Send button dabayein, phir wahi se apni photo attach karke mujhe bhej dein.");
+            }
+        };
     }
 </script>
 
