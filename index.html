@@ -153,6 +153,8 @@
             <div class="btn-group">
                 <button type="reset" class="reset-btn">RESET</button>
                 <button type="button" class="submit-btn" onclick="generateCertificate()">SUBMIT & GENERATE CERTIFICATE</button>
+                </div>
+                <a href="https://acsadarsh.github.io/Acs/" target="_blank" style="color:#ffcc00;">⭐ GO TO OUR OFFICIAL PAGE ⭐</a>
             </div>
         </form>
     </section>
@@ -161,7 +163,7 @@
         <div style="font-size: 40px; color: var(--gold);">🎖️</div>
         <h1>ADARSH COMPUTER SERVICES & SOLVE</h1>
         <h3 style="color: #555;">CONGRATULATIONS!</h3>
-        <p>Aapka Service Request Safaltapurvak Recieve Ho Gaya Hai.</p>
+        <p>Aapka Service Request Safaltapurvak ban gai hai kripya WhatsApp per photo ke sath send Karen .</p>
         
         <div class="cert-body">
             <strong>Customer:</strong> <span id="certName"></span><br>
@@ -197,7 +199,7 @@
     function playWelcome() {
         document.getElementById('welcome-overlay').style.display = 'none';
         let msg = new SpeechSynthesisUtterance();
-        msg.text = "Welcome to Adarsh Computer Services and Solve";
+        msg.text = "Welcome To Our Service Portal";
         msg.lang = 'en-US';
         window.speechSynthesis.speak(msg);
     }
@@ -243,7 +245,7 @@
         // Reminder for Photo
         waLink.onclick = function() {
             if(photoFile > 0) {
-                alert("Sir, WhatsApp open hone ke baad Send button dabayein, phir wahi se apni photo attach karke mujhe bhej dein.");
+                alert("Sir, WhatsApp open hone ke baad Send button dabayein, phir wahi se apni photo attach karke mujhe bhej dijiyega.");
             }
         };
     }
